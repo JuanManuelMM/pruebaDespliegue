@@ -29,16 +29,16 @@ jobs:
         name: allartifacts
         path: BasketBuddy/target/*
 
-  #  - name: Download artifact
-  #    uses: actions/download-artifact@v4
-  #    with:
-  #      name: allartifacts
-  #      path: distfiles
+    - name: Download artifact
+      uses: actions/download-artifact@v4
+      with:
+        name: allartifacts
+        path: distfiles
 
 
-  #  - name: Build Docker image
-  #    run: |
-  #      docker build -t helloapp .
+    - name: Build Docker image
+      run: |
+        docker build -t juanma-web .
    
     - name: Upload to remote with SCP
       uses: appleboy/scp-action@v0.1.7
