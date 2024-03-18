@@ -68,4 +68,4 @@ jobs:
             docker stop juanma-web-1 ; 
             docker rm juanma-web-1 -f ; 
             docker rmi juanma-web -f ; 
-            docker compose up -d 
+            docker-compose up -d 
