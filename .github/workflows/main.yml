@@ -27,18 +27,18 @@ jobs:
       uses: actions/upload-artifact@v4
       with:
         name: allartifacts
-        path: PruebaDespliegue/target/*
+        path: BasketBuddy/target/*
 
-  #  - name: Download artifact
-  #    uses: actions/download-artifact@v4
-  #    with:
-  #      name: allartifacts
-  #      path: distfiles
+    #- name: Download artifact
+     # uses: actions/download-artifact@v4
+      #with:
+       # name: allartifacts
+        #path: distfiles
 
 
-  #  - name: Build Docker image
-  #    run: |
-  #      docker build -t helloapp .
+    #- name: Build Docker image
+     # run: |
+      #  docker build -t juanma-web .
    
     - name: Upload to remote with SCP
       uses: appleboy/scp-action@v0.1.7
@@ -54,6 +54,9 @@ jobs:
     runs-on: ubuntu-latest
     needs: build
     steps:
+    - name: Print current directory
+      run: echo "Directorio" ; pwd
+
     - name: Deploy to digitalocean
       uses: appleboy/ssh-action@master
       with:
