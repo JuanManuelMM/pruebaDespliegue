@@ -61,7 +61,7 @@ jobs:
         host: "157.245.42.131"
         key: ${{ secrets.KEY }}
         script: |
-            docker stop juanma-web-1 ; 
-            docker rm juanma-web-1 -f ; 
-            docker rmi juanma-web -f ; 
-            docker compose up -d
+            docker stop juanma-web-1 || true
+            docker rm juanma-web-1 || true
+            docker rmi juanma-web || true
+            cd ~/ && docker-compose up -d
