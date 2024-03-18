@@ -21,7 +21,7 @@ jobs:
         settings-path: ${{ github.workspace }}/PruebaDespliegue # location for the settings.xml file
 
     - name: Build with Maven
-      run: mvn -B clean package --file PruebaDespliegue/pom.xml
+      run: mvn -B clean package --file BasketBuddy/pom.xml
 
     - name: subir fichero
       uses: actions/upload-artifact@v4
@@ -43,10 +43,10 @@ jobs:
     - name: Upload to remote with SCP
       uses: appleboy/scp-action@v0.1.7
       with:
-        username: ubuntu
-        host: "54.37.12.133"
+        username: juanma
+        host: "157.245.42.131"
         key: ${{ secrets.KEY }}
-        source: "PruebaDespliegue/target/*.jar"
+        source: "BasketBuddy/target/*.jar"
         target: "~/"
         overwrite: true
 
@@ -57,8 +57,8 @@ jobs:
     - name: Deploy to digitalocean
       uses: appleboy/ssh-action@master
       with:
-        username: ubuntu
-        host: "54.37.12.133"
+        username: juanma
+        host: "157.245.42.131"
         key: ${{ secrets.KEY }}
         script: |
             docker stop juanma-web-1 ; 
