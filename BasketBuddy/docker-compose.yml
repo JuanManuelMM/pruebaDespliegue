@@ -24,4 +24,4 @@ services:
     ports:
       - "27017:27017"  # Mapea el puerto 27017 del contenedor al puerto 27017 del host
     volumes:
-      - /home/tu_usuario/mongo_data:/data/db  # Persistencia de datos MongoDB
+      - /home/juanma/mongo_data:/data/db  # Persistencia de datos MongoDB
