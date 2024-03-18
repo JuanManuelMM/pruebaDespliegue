@@ -65,7 +65,11 @@ jobs:
         host: "157.245.42.131"
         key: ${{ secrets.KEY }}
         script: |
-            docker stop juanma-web-1 ; 
-            docker rm juanma-web-1 -f ; 
-            docker rmi juanma-web -f ; 
-            docker-compose up -d 
+            # Detener la aplicación si se está ejecutando
+            systemctl stop BasketBuddy-0.0.1-SNAPSHOT.jar || true
+            
+            # Copiar el archivo JAR a la ubicación de implementación
+            cp ~/mi-aplicacion.jar /home/juanma/BasketBuddy/target/BasketBuddy-0.0.1-SNAPSHOT.jar
+            
+            # Iniciar la aplicación con Java
+            java -jar /home/juanma/BasketBuddy/target/BasketBuddy-0.0.1-SNAPSHOT.jar 
