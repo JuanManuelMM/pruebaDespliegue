@@ -1,0 +1,27 @@
+version: '3.8'
+
+services:
+  juanma-web:
+    image: juanma-web # La imagen Docker de tu aplicación Spring Boot
+    ports:
+      - "8080:8080"  # Mapea el puerto 8080 del contenedor al puerto 8080 del host
+    depends_on:
+      - mysql
+      - mongo
+
+  mysql:
+    image: mysql:latest
+    environment:
+      MYSQL_ROOT_PASSWORD: 1q2w3e4r
+      MYSQL_DATABASE: basketbuddy
+    ports:
+      - "3306:3306"  # Mapea el puerto 3306 del contenedor al puerto 3306 del host
+    volumes:
+      - /home/juanma/mysql_data:/var/lib/mysql  # Persistencia de datos MySQL
+
+  mongo:
+    image: mongo:latest
+    ports:
+      - "27017:27017"  # Mapea el puerto 27017 del contenedor al puerto 27017 del host
+    volumes:
+      - /home/juanma/mongo_data:/data/db  # Persistencia de datos MongoDB
